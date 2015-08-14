@@ -1,6 +1,7 @@
 com\artidemo\model\Artifact.class
 com\artidemo\request\Request.class
 com\artidemo\core\ArtiDemoApplication.class
+com\artidemo\request\interceptor\AuthenticationInterceptor.class
 com\artidemo\core\AppConstant.class
 com\artidemo\core\AppConfig.class
 com\artidemo\model\Build.class

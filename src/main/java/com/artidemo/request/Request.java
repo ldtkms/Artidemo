@@ -1,7 +1,7 @@
 package com.artidemo.request;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.artidemo.core.AppConstant;
@@ -12,11 +12,11 @@ import com.artidemo.model.Artifact;
  * @author tuyenlieu
  *			This class represents atomic request to Artifactory server
  */
-@Configurable
+@Component
 public class Request {
 
 	@Autowired 
-	private RestTemplate template;
+	public RestTemplate restTemplate;
 	
 	String url;
 	
@@ -33,8 +33,12 @@ public class Request {
 		
 	}
 	
-	public Object getBuild(String buildName) {
- 		Object result = template.getForEntity(url, String.class);
+	public void appendURL(String appendee) {
+		url = url + appendee;
+	}
+	
+	public String getBuild(String buildName) {
+ 		String result = restTemplate.getForObject(url, String.class);
 		return result;
 	}
 	
